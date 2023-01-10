@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.merotifiin.user.mapper.UserMapper">
+
+    <resultMap id="baseResultMap" type="com.merotifiin.user.model.UserResponsePojo">
+
+        <result property="userId" column="userId"/>
+        <result property="fullNameEn" column="fullNameEn"/>
+        <result property="fullNameNp" column="fullNameNp"/>
+        <result property="email" column="email"/>
+        <result property="phone" column="phone"/>
+        <result property="dateOfBirth" column="dateOfBirth"/>
+        <result property="gender" column="gender"/>
+        <result property="lastLoginDate" column="lastLoginDate"/>
+        <result property="lastLogoutDate" column="lastLogoutDate"/>
+        <result property="createdDate" column="createdDate"/>
+        <result property="modifiedDate" column="modifiedDate"/>
+        <result property="createdBy" column="createdBy"/>
+        <result property="modifiedBy" column="modifiedBy"/>
+        <result property="isActive" column="isActive"/>
+        <result property="enabled" column="enabled"/>
+
+        <collection property="address" ofType="com.merotifiin.address.model.AddressPojo">
+            <result property="country" column="country"/>
+            <result property="city" column="city"/>
+            <result property="zone" column="zone"/>
+            <result property="street" column="street"/>
+            <result property="createdDate" column="createdDate"/>
+            <result property="modifiedDate" column="modifiedDate"/>
+            <result property="createdBy" column="createdBy"/>
+            <result property="modifiedBy" column="modifiedBy"/>
+            <result property="isActive" column="isActive"/>
+        </collection>
+
+        <collection property="roles" ofType="java.lang.String"
+                    select="selectRoles"
+                    column="{email=email}">
+        </collection>
+
+    </resultMap>
+
+    <select id="allUser" resultMap="baseResultMap">
+        select u.user_id                                                 as userId,
+               case
+                   when u.middle_name_en IS NOT NULL
+                       then concat(u.first_name_en, ' ', u.middle_name_en, ' ', u.last_name_en)
+                   else concat(u.first_name_en, ' ', u.last_name_en) end as fullNameEn,
+               case
+                   when u.middle_name_en IS NOT NULL
+                       then concat(u.first_name_np, ' ', u.middle_name_np, ' ', u.last_name_np)
+                   else concat(u.first_name_np, ' ', u.last_name_np) end as fullNameNp,
+               u.email                                                   as email,
+               u.phone                                                   as phone,
+               u.created_date                                            as createdDate,
+               u.created_by                                              as createdBy,
+               u.modified_date                                           as modifiedDate,
+               u.modified_by                                             as modifiedBy,
+               u.is_active                                               as isActive,
+               u.gender                                                  as gender,
+               a.country                                                 as country,
+               a.zone as zone,
+        a.city as city,
+        a.street as street
+        from users u
+            left join address a on a.id = u.address_id;
+    </select>
+
+    <select id="selectRoles" resultType="java.lang.String">
+        select r.name as roles
+        from roles r
+                 left join users_roles ur on ur.role_id = r.id
+                 left join users u on ur.user_id = u.id
+        where lower(u.email) = lower(#{email})
+    </select>
+</mapper>
