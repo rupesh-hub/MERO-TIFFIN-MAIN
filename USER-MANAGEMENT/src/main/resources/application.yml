@@ -1,0 +1,36 @@
+#SERVER CONFIGURATION
+server:
+  port: 8181
+  servlet:
+    context-path: /user-api/v1.0
+
+
+#SPRING CONFIGURATION
+spring:
+  application:
+    name: USER-MANAGEMENT
+
+#POSTGRES SQL CONFIGURATION
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/user_db
+    username: postgres
+    password: postgres
+    hikari:
+      idle-timeout: 10000
+      maximum-pool-size: 10
+      minimum-idle: 5
+      pool-name: WriteHikariPool
+
+#JPA CONFIGURATION
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+
+#MYBATIS PLUS CONFIGURATION
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:**/sql/*.xml
