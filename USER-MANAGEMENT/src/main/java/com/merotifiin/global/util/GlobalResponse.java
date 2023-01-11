@@ -1,6 +1,7 @@
 package com.merotifiin.global.util;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.merotifiin.global.pojo.Pagination;
 import lombok.*;
 import org.springframework.http.HttpStatus;
 
@@ -19,5 +20,6 @@ public class GlobalResponse<T> {
     private int statusCode;
     private LocalDateTime timeStamp;
     private T data;
+    private Pagination pagination;
 
 }

@@ -16,12 +16,8 @@ import java.util.Date;
 public class UserPojo {
 
     private String userId;
-    private String firstNameEn;
-    private String middleNameEn;
-    private String lastNameEn;
-    private String firstNameNp;
-    private String middleNameNp;
-    private String lastNameNp;
+    private String fullNameEn;
+    private String fullNameNp;
     private String email;
     private String phone;
     private Date dateOfBirth;
@@ -33,5 +29,6 @@ public class UserPojo {
     private String createdBy;
     private String modifiedBy;
     private Boolean isActive;
+    private Boolean enabled;
 
 }
