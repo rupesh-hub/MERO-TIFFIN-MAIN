@@ -2,6 +2,7 @@ package com.merotifiin.global.util;
 
 import java.util.UUID;
 
+import com.merotifiin.global.pojo.Pagination;
 import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;
@@ -18,7 +19,8 @@ public class GlobalUtil {
 
     public static <T> GlobalResponse<T> globalResponse(final String message,
                                                        final HttpStatus httpStatus,
-                                                       final T data) {
+                                                       final T data,
+                                                       final Pagination pagination) {
         return GlobalResponse
                 .<T>builder()
                 .message(message)
@@ -26,6 +28,7 @@ public class GlobalUtil {
                 .statusCode(httpStatus.value())
                 .timeStamp(LocalDateTime.now())
                 .data(data)
+                .pagination(pagination)
                 .build();
 
     }
