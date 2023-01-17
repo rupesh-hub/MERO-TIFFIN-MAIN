@@ -6,6 +6,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,7 +19,11 @@ public class RoleService implements IRoleService {
 
     @Override
     @Transactional
-    public List<Role> createRoles(List<Role> roles) {
+    public List<Role> createRoles(final List<Role> roles) {
+        roles.forEach(role -> {
+            role.setCreatedDate(LocalDateTime.now());
+            role.setCreatedBy("");
+        });
         return roleRepository.saveAll(roles);
     }
 

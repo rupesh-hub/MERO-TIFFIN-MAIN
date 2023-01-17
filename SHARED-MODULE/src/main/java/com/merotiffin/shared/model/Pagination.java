@@ -1,4 +1,4 @@
-package com.merotifiin.global.pojo;
+package com.merotiffin.shared.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;

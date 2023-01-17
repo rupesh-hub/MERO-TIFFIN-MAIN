@@ -1,7 +1,7 @@
 package com.merotifiin.user.enums;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.merotifiin.global.pojo.KeyValuePojo;
+import com.merotiffin.shared.model.KeyValuePojo;
 
 import java.util.Arrays;
 import java.util.List;

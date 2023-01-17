@@ -1,7 +1,7 @@
-package com.merotifiin.global.util;
+package com.merotiffin.shared.util;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.merotifiin.global.pojo.Pagination;
+import com.merotiffin.shared.model.Pagination;
 import lombok.*;
 import org.springframework.http.HttpStatus;
 

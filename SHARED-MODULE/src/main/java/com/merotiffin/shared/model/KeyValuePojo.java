@@ -1,4 +1,4 @@
-package com.merotifiin.global.pojo;
+package com.merotiffin.shared.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
@@ -29,15 +29,14 @@ public class KeyValuePojo {
         this.valueEnglish = valueEnglish;
     }
 
-    public KeyValuePojo(String key, String valueNepali, String valueEnglish,Integer value) {
+    public KeyValuePojo(String key, String valueNepali, String valueEnglish, Integer value) {
         this.key = key;
         this.valueNepali = valueNepali;
         this.valueEnglish = valueEnglish;
-        this.value=value;
+        this.value = value;
     }
 
     public String getLabel() {
         return LocaleContextHolder.getLocale().getDisplayLanguage().equalsIgnoreCase("np") ? valueNepali : valueEnglish;
     }
 }
-

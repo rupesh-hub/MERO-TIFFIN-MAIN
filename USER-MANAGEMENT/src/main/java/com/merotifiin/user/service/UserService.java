@@ -1,11 +1,11 @@
 package com.merotifiin.user.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.merotiffin.shared.model.Pagination;
+import com.merotiffin.shared.util.GlobalResponse;
+import com.merotiffin.shared.util.GlobalUtil;
 import com.merotifiin.address.convertor.AddressConvertor;
 import com.merotifiin.address.model.AddressPojo;
-import com.merotifiin.global.pojo.Pagination;
-import com.merotifiin.global.util.GlobalResponse;
-import com.merotifiin.global.util.GlobalUtil;
 import com.merotifiin.role.entity.Role;
 import com.merotifiin.role.service.RoleService;
 import com.merotifiin.user.convertor.UserConvertor;

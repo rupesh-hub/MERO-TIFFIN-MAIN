@@ -1,7 +1,7 @@
 package com.merotifiin.address.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.merotifiin.global.abstracts.AbstractEntity;
+import com.merotiffin.shared.model.AbstractEntity;
 import com.merotifiin.user.entity.User;
 import jakarta.persistence.*;
 import lombok.*;

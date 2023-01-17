@@ -1,7 +1,6 @@
 package com.merotifiin.user.service;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.merotifiin.global.util.GlobalResponse;
+import com.merotiffin.shared.util.GlobalResponse;
 import com.merotifiin.user.model.UserPojo;
 import com.merotifiin.user.model.UserRequestPojo;
 import com.merotifiin.user.model.UserResponsePojo;

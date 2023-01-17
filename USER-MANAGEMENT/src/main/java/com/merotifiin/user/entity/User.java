@@ -2,8 +2,8 @@ package com.merotifiin.user.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.merotiffin.shared.model.AbstractEntity;
 import com.merotifiin.address.entity.Address;
-import com.merotifiin.global.abstracts.AbstractEntity;
 import com.merotifiin.role.entity.Role;
 import com.merotifiin.user.enums.Gender;
 import jakarta.persistence.*;

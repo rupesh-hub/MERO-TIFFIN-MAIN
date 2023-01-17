@@ -1,9 +1,12 @@
 package com.merotifiin.role.entity;
 
+import com.merotiffin.shared.model.AbstractEntity;
 import com.merotifiin.role.enums.Roles;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
+
+import java.io.Serializable;
 
 
 @Entity
@@ -15,7 +18,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @DynamicUpdate
 @Table(name="roles")
 @ToString
-public class Role {
+public class Role extends AbstractEntity<Long> implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "role_id_seq_gen")

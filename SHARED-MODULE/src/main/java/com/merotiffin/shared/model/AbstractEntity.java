@@ -1,4 +1,5 @@
-package com.merotifiin.global.abstracts;
+package com.merotiffin.shared.model;
+
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
@@ -47,6 +48,6 @@ public abstract class AbstractEntity<PK extends Serializable> {
 
     @Column(name = "is_active")
     @JsonProperty("isActive")
-    private Boolean isActive=true;
+    private Boolean isActive = true;
 
 }
