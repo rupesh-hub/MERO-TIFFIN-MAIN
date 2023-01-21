@@ -1,0 +1,39 @@
+#SERVER CONFIGURATION
+server:
+  port: 8282
+  servlet:
+    context-path: /product-api/v1.0
+
+
+#SPRING CONFIGURATION
+spring:
+  application:
+    name: PRODUCT-MANAGEMENT
+
+  #POSTGRES SQL CONFIGURATION
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/product_db
+    username: postgres
+    password: postgres
+    hikari:
+      idle-timeout: 10000
+      maximum-pool-size: 10
+      minimum-idle: 5
+      pool-name: WriteHikariPool
+
+  #JPA CONFIGURATION
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+#MYBATIS PLUS CONFIGURATION
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:**/sql/*.xml

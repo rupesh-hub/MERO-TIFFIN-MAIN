@@ -1,8 +1,8 @@
-package com.merotifiin.global.util;
+package com.merotiffin.shared.util;
 
 import java.util.UUID;
 
-import com.merotifiin.global.pojo.Pagination;
+import com.merotiffin.shared.model.Pagination;
 import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;
