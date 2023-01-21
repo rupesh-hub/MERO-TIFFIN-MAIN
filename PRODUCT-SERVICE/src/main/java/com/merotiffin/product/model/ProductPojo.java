@@ -1,6 +1,7 @@
 package com.merotiffin.product.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.merotiffin.category.model.ProductCategoryPojo;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -26,5 +27,6 @@ public class ProductPojo {
     private String createdBy;
     private String modifiedBy;
     private Boolean isActive;
+    private ProductCategoryPojo category;
 
 }

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.merotiffin.product.mapper.ProductMapper">
+
+    <resultMap id="baseProductMap" type="com.merotiffin.product.model.ProductPojo">
+        <id property="id" column="id"/>
+        <result property="sku" column="sku"/>
+        <result property="name" column="name"/>
+        <result property="price" column="price"/>
+        <result property="weight" column="weight"/>
+        <result property="description" column="description"/>
+        <result property="image" column="image"/>
+        <result property="stock" column="stock"/>
+        <result property="createdDate" column="createdDate"/>
+        <result property="modifiedDate" column="modifiedDate"/>
+        <result property="createdBy" column="createdBy"/>
+        <result property="modifiedBy" column="modifiedBy"/>
+        <result property="isActive" column="isActive"/>
+
+        <collection property="category" ofType="com.merotiffin.category.model.ProductCategoryPojo">
+            <id property="id" column="categoryId"/>
+            <result property="name" column="categoryName"/>
+            <result property="description" column="categorDescription"/>
+            <result property="createdDate" column="categoryCreatedDate"/>
+            <result property="modifiedDate" column="categoryModifiedDate"/>
+            <result property="createdBy" column="categoryCreatedBy"/>
+            <result property="modifiedBy" column="categoryModifiedBy"/>
+            <result property="isActive" column="categoryIsActive"/>
+        </collection>
+    </resultMap>
+
+    <select id="productsByCategory" resultMap="baseProductMap">
+        select p.id as id,
+        p.name as name,
+        p.created_date as createdDate,
+        p.created_by as createdBy,
+        p.modified_date as modifiedDate,
+        p.modified_by as modifiedBy,
+        p.is_active as isActive,
+        p.description as description,
+        p.image as image,
+        p.price as proce,
+        p.sku as sku,
+        p.stock as stock,
+        p.weight as weight,
+        pc.id as categoryId,
+        pc.created_by as categoryCreatedBy,
+        pc.created_date as categoryCreatedDate,
+        pc.modified_by as categoryModifiedBy,
+        pc.modified_date as categoryModifiedDate,
+        pc.description as categorDescription,
+        pc.name as categoryName,
+        pc.is_active as categoryIsActive
+        from products p
+        inner join products_categories pcs on p.id = pcs.product_id
+        inner join product_category pc on pc.id = pcs.category_id
+
+        <if test="searchField != null">
+            <if test="(searchField.category != null and searchField.category != '')">
+                <bind name="category" value="searchField.category"/>
+                and lower(pc.name) = lower(#{category})
+            </if>
+        </if>
+    </select>
+
+</mapper>

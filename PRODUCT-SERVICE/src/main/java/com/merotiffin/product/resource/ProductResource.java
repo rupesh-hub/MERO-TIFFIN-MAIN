@@ -1,8 +1,8 @@
 package com.merotiffin.product.resource;
 
-import com.merotiffin.product.model.ProductPojo;
 import com.merotiffin.product.model.ProductRequestPojo;
 import com.merotiffin.product.service.IProductService;
+import com.merotiffin.shared.model.PagingRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,9 +23,9 @@ public class ProductResource {
         return new ResponseEntity(productService.saveAll(products), HttpStatus.CREATED);
     }
 
-    @GetMapping(path = {"/all"})
-    public ResponseEntity<?> allProducts() {
-        return new ResponseEntity(productService.allProduct(), HttpStatus.OK);
+    @PostMapping(path = {"/paginated"})
+    public ResponseEntity<?> allProductsByCategory(@RequestBody final PagingRequest pagingRequest) {
+        return new ResponseEntity(productService.allProductsByCategory(pagingRequest), HttpStatus.OK);
     }
 
 }
